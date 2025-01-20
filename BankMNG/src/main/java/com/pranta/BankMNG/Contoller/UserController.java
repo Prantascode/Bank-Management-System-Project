@@ -7,10 +7,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pranta.BankMNG.Dto.BankResponse;
+import com.pranta.BankMNG.Dto.CreditDebitRequest;
 import com.pranta.BankMNG.Dto.EnquiryRequest;
 import com.pranta.BankMNG.Dto.UserRequest;
 import com.pranta.BankMNG.ServiceImpl.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
+
+
 
 
 @RestController
@@ -32,6 +35,13 @@ public class UserController {
     public String nameEnquiry(@RequestBody EnquiryRequest request) {
         return userService.nameEnquiry(request);
     }
-    
+    @PostMapping("credit")
+    public BankResponse creditAccount(@RequestBody CreditDebitRequest request) {
+        return userService.creditAccount(request);
+    }
+    @PostMapping("debit")
+    public BankResponse debitAccount(@RequestBody CreditDebitRequest request) {        
+        return userService.debitAccount(request);
+    }
     
 }
